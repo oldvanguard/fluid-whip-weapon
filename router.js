@@ -12,7 +12,7 @@
  const map={
   home:window.commandDashboard||window.home,train:window.train,move:window.moveView,quick:window.quick,flow:window.flow,progress:window.progress,learn:window.learn,curriculum:window.curriculum,body:window.body,pain:window.pain,precheck:window.readiness,
   whipcurriculum:window.whipCurriculum,whiptrain:window.whipTrain,whipmove:window.whipMove,
-  weapon:window.weaponHome||window.weaponManual,weaponcurriculum:window.weaponCurriculum,weapontrain:window.weaponTrain,weaponmove:window.weaponMove,weaponlibrary:window.weaponTechnicalLibrary||window.weaponLibrary,weapontech:window.weaponTechniqueView,
+  weapon:window.weaponHome||window.weaponManual,weaponlesson:window.weaponLesson,weaponcurriculum:window.weaponCurriculum,weapontrain:window.weaponTrain,weaponmove:window.weaponMove,weaponlibrary:window.weaponTechnicalLibrary||window.weaponLibrary,weapontech:window.weaponTechniqueView,
   adaptivelab:window.adaptiveLab,offenselibrary:window.offenseLibrary,combolab:window.comboLab,
   fitness:window.fitnessHome,fitnessworkout:window.fitnessWorkout,readiness:window.readinessHome,program:window.programHome
  };
