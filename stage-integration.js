@@ -1,0 +1,10 @@
+(()=>{
+ state.systemStage=state.systemStage||'FLUID';
+ window.setSystemStage=s=>{state.systemStage=s;save();render()};
+ window.whipUnlocked=()=>FLUID.levels[2].gate.every(x=>state.earned.includes(x));
+ window.stageOverview=()=>{const unlocked=whipUnlocked();return `<div class="stage-switch"><button class="stage-fluid ${state.systemStage==='FLUID'?'active':''}" onclick="setSystemStage('FLUID')"><small>STAGE I</small><b>FLUID</b><span>Connect the Chain</span></button><button class="stage-whip ${state.systemStage==='WHIP'?'active':''} ${unlocked?'':'stage-locked'}" ${unlocked?`onclick="setSystemStage('WHIP')"`:''}><small>STAGE II</small><b>WHIP</b><span>${unlocked?'Accelerate the Chain':'Complete FLUID to unlock'}</span></button><button class="stage-weapon stage-locked"><small>STAGE III</small><b>WEAPON</b><span>Apply the Chain</span></button></div>`};
+ window.whipManual=()=>`<div class="pagehead"><div><div class="eyebrow">STAGE II · PERFORMANCE LAYER</div><h1>WHIP</h1><p>Acceleration is earned from coordination. Speed is never used to hide poor structure.</p></div></div>${stageOverview()}<section class="card wide"><div class="eyebrow">THE FIVE LAWS</div><div class="principle-grid">${WHIP.principles.map((p,i)=>`<article><strong>0${i+1}</strong><div><b>${p.name}</b><span>${p.desc}</span></div></article>`).join('')}</div></section>${WHIP.levels.map(l=>`<section class="card wide"><div class="eyebrow">${l.id} · ${l.name}</div><h3>${l.mission}</h3><div class="workout">${WHIP.sessions.filter(s=>s.level===l.id).map(s=>`<div class="move"><div class="move-icon">${s.id.split('-')[1]}</div><div class="move-copy"><small>${s.focus}</small><strong>${s.name}</strong><small>${s.chain}</small></div><span class="tag">${whipUnlocked()?'READY':'PREVIEW'}</span></div>`).join('')}</div></section>`).join('')}`;
+ const originalLearn=learn;
+ window.learn=()=>state.systemStage==='WHIP'?whipManual():`${stageOverview()}${originalLearn()}`;
+ render();
+})();
