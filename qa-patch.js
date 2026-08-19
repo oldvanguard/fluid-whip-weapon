@@ -1,5 +1,5 @@
 (()=>{
- // QA patch: separate the legacy pre-session check from the adaptive physical readiness profile.
+ // Compatibility helpers retained for older UI actions. Rendering is owned by AppRouter.
  window.startReadiness=()=>{state.page='precheck';save();render()};
  window.openReadiness=()=>{state.page='readiness';save();render()};
  window.safeGo=page=>{state.page=page;save();render()};
@@ -9,10 +9,4 @@
    if(d.martial){launchProgramBlock('martial');return;}
    openProgram();
  };
- const oldRender=render;
- window.render=()=>{
-   if(state.page==='precheck')document.getElementById('app').innerHTML=shell(readiness());
-   else oldRender();
- };
- render();
 })();
