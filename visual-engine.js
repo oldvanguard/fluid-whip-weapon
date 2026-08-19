@@ -1,9 +1,0 @@
-window.VisualEngine={
- viewFor(moveId){const spec=MOVEMENT_VISUALS.moves[moveId]||MOVEMENT_VISUALS.defaults;return spec.preferred||'side'},
- spec(moveId){return {...MOVEMENT_VISUALS.defaults,...(MOVEMENT_VISUALS.moves[moveId]||{})}},
- views(moveId){return this.spec(moveId).views||MOVEMENT_VISUALS.defaults.views},
- frames(moveId){return this.spec(moveId).sequence||MOVEMENT_VISUALS.defaults.sequence},
- frameClass(moveId,frameIndex){const frames=this.frames(moveId);const p=frames.length<=1?0:frameIndex/(frames.length-1);if(p<.34)return'pose-start';if(p<.67)return'pose-mid';return'pose-finish'},
- render(moveId,view,frameIndex){const spec=this.spec(moveId),frames=this.frames(moveId),frame=frames[frameIndex]||frames[0],cls=this.frameClass(moveId,frameIndex);return `<div class="visual-live ${view} ${cls}" aria-label="${moveId} ${view} ${frame}"><div class="floor-line"></div><div class="avatar-figure production"><div class="head"></div><div class="neck"></div><div class="torso"></div><div class="pelvis"></div><div class="arm a1"><i></i></div><div class="arm a2"><i></i></div><div class="leg l1"><i></i></div><div class="leg l2"><i></i></div></div><div class="frame-label"><b>${frame}</b><small>${view.toUpperCase()} VIEW</small></div></div>`},
- controls(moveId,view,frameIndex){const views=this.views(moveId),frames=this.frames(moveId);return `<div class="visual-controls"><div><small>VIEW</small>${views.map(v=>`<button class="${v===view?'selected':''}" onclick="setVisualView('${v}')">${v.toUpperCase()}</button>`).join('')}</div><div><small>SEQUENCE</small>${frames.map((f,i)=>`<button class="${i===frameIndex?'selected':''}" onclick="setVisualFrame(${i})">${i+1} · ${f}</button>`).join('')}</div></div>`}
-};
