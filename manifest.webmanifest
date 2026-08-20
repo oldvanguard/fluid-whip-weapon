@@ -1,11 +1,15 @@
 {
+  "id": "./",
   "name": "FLUID → WHIP → WEAPON",
   "short_name": "FWW",
-  "description": "Adaptive movement, fitness and self-defense training system.",
+  "description": "Adaptive chained-movement, fitness and self-defense training system.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0b0e12",
-  "theme_color": "#0b0e12",
+  "background_color": "#050607",
+  "theme_color": "#050607",
   "orientation": "portrait-primary",
-  "icons": []
+  "icons": [
+    {"src":"assets/icon-fww.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
 }
